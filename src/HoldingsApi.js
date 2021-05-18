@@ -1,9 +1,9 @@
 export default class HoldingsApi {
     static async getAll() {
-      return JSON.parse(localStorage.getItem("coin-list") || "[]");
+      return JSON.parse(localStorage.getItem("holdings-list") || "[]");
     }
   
-    static async save(items) {
-      localStorage.setItem("coin-list", JSON.stringify(items));
+    static async save(holdingsItems) {
+      localStorage.setItem("holdings-list", JSON.stringify(holdingsItems));
     }
   }

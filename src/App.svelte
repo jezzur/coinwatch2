@@ -1,6 +1,6 @@
 <script>
 	import HeaderGoals from "./components/HeaderGoals.svelte";
-	import ListGoals from "./components/List.svelte";
+	import ListGoals from "./components/ListGoals.svelte";
 	import HeaderHoldings from "./components/HeaderHoldings.svelte";
 	import ListHoldings from "./components/ListHoldings.svelte";
   </script>

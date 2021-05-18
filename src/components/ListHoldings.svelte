@@ -1,50 +1,50 @@
 <script>
     import { onMount } from "svelte";
     import { v4 as uuidv4 } from "uuid";
-    import { items } from "../stores";
-    import TodoApi from "../TodoApi";
-    import Item from "./Item-goal.svelte";
+    import { holdingsItems } from "../stores";
+    import HoldingsApi from "../HoldingsApi";
+    import ItemHoldings from "./ItemHoldings.svelte";
     import NewItem from "./NewItem.svelte";
     /**
      * Add new item to list and save to API.
      */
     function handleNewItem({ detail: text }) {
-      $items = [
+      $holdingsItems = [
         {
           id: uuidv4(),
           text,
           complete: false,
         },
-        ...$items,
+        ...$holdingsItems,
       ];
-      TodoApi.save($items);
+      HoldingsApi.save($holdingsItems);
     }
     /**
      * Update store with new data and save to API.
      */
     function handleUpdate({ detail }) {
-      const index = $items.findIndex((item) => item.id === detail.id);
-      $items[index] = detail;
-      TodoApi.save($items);
+      const index = $holdingsItems.findIndex((item) => item.id === detail.id);
+      $holdingsItems[index] = detail;
+      HoldingsApi.save($holdingsItems);
     }
     /**
      * Delete item by ID from the store and save to API.
      */
     function handleDelete({ detail: id }) {
-      $items = $items.filter((item) => item.id !== id);
-      TodoApi.save($items);
+      $holdingsItems = $holdingsItems.filter((item) => item.id !== id);
+      HoldingsApi.save($holdingsItems);
     }
-    let itemsSorted = [];
+    let holdingsSorted = [];
     $: {
-      itemsSorted = [...$items];
-      itemsSorted.sort((a, b) => {
+      holdingsSorted = [...$holdingsItems];
+      holdingsSorted.sort((a, b) => {
         if (a.complete && b.complete) return 0;
         if (a.complete) return 1;
         if (b.complete) return -1;
       });
     }
     onMount(async () => {
-      $items = await TodoApi.getAll();
+      $holdingsItems = await HoldingsApi.getAll();
     });
   </script>
   
@@ -63,9 +63,9 @@
   
   <div class="list">
     <NewItem on:newitem={handleNewItem} />
-    {#each itemsSorted as item (item)}
-      <Item {...item} on:update={handleUpdate} on:delete={handleDelete} />
+    {#each holdingsSorted as item (item)}
+      <ItemHoldings {...item} on:update={handleUpdate} on:delete={handleDelete} />
     {:else}
-      <p class="list-status">No Items Exist</p>
+      <p class="list-status">You haven't entered any crypto holdings</p>
     {/each}
   </div>

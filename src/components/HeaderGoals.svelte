@@ -1,7 +1,7 @@
 <script>
-    import { items } from "../stores";
-    $: itemCount = $items.length;
-    $: completedItemCount = $items.filter((item) => item.complete).length;
+    import { goalItems } from "../stores";
+    $: itemCount = $goalItems.length;
+    $: completedItemCount = $goalItems.filter((item) => item.complete).length;
   </script>
   
   <style>

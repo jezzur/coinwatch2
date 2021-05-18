@@ -1,9 +1,9 @@
 <script>
     import { createEventDispatcher } from "svelte";
-    export let id, text, complete;
+    export let id, text, complete, purchasePrice, quantity;
     const dispatch = createEventDispatcher();
     function triggerUpdate() {
-      dispatch("update", { id, text, complete });
+      dispatch("update", { id, text, complete, purchasePrice, quantity });
     }
     function handleDoubleClick() {
       const yes = confirm("Are you sure you wish to delete this item?");
@@ -51,9 +51,22 @@
       readonly={complete}
       on:keyup={({ key, target }) => key === 'Enter' && target.blur()}
       on:blur={() => triggerUpdate()} />
-    <input
-      class="complete-checkbox"
-      type="checkbox"
-      bind:checked={complete}
-      on:change={() => triggerUpdate()} />
+    
+      <input
+      class="text-input"
+      type="number"
+      placeholder="Enter quantity"
+      bind:value={quantity}
+      readonly={complete}
+      on:keyup={({ key, target }) => key === 'Enter' && target.blur()}
+      on:blur={() => triggerUpdate()} />
+
+      <input
+      class="text-input"
+      type="number"
+      placeholder="Enter purchase price"
+      bind:value={purchasePrice}
+      readonly={complete}
+      on:keyup={({ key, target }) => key === 'Enter' && target.blur()}
+      on:blur={() => triggerUpdate()} />
   </div>
