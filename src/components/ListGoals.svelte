@@ -3,7 +3,7 @@
     import { v4 as uuidv4 } from "uuid";
     import { items } from "../stores";
     import TodoApi from "../TodoApi";
-    import Item from "./Item-goal.svelte";
+    import Item from "./ItemGoals.svelte";
     import NewItem from "./NewItem.svelte";
     /**
      * Add new item to list and save to API.
