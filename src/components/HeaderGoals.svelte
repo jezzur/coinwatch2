@@ -18,6 +18,6 @@
   </style>
   
   <div class="header">
-    <div>Dom's To-Do List</div>
+    <div>Crypto Goals</div>
     <span> {completedItemCount}/{itemCount} </span>
   </div>

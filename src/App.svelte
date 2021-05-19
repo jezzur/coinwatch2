@@ -3,6 +3,7 @@
 	import ListGoals from "./components/ListGoals.svelte";
 	import HeaderHoldings from "./components/HeaderHoldings.svelte";
 	import ListHoldings from "./components/ListHoldings.svelte";
+	import FetchMarketData from "./components/FetchMarketData.svelte";
   </script>
   
   <style>
@@ -20,4 +21,5 @@
 	<ListHoldings />
 	<HeaderGoals />
 	<ListGoals />
+	<FetchMarketData />
   </div>

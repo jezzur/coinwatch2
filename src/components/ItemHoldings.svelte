@@ -38,9 +38,7 @@
       font-weight: 500;
       font-size: 1em;
     }
-    .complete-checkbox {
-      margin-left: 15px;
-    }
+   
   </style>
   
   <div class="item" class:complete on:dblclick={handleDoubleClick}>
